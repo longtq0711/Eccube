@@ -50,9 +50,9 @@ jobs:
         run: |
           rm -rf $GITHUB_WORKSPACE/app/Plugin/*
           echo "APP_ENV=${APP_ENV}" > .env
-          bin/console doctrine:database:create --env=dev
-          bin/console doctrine:schema:create --env=dev
-          bin/console eccube:fixtures:load --env=dev
+          php bin/console doctrine:database:create --env=dev
+          php bin/console doctrine:schema:create --env=dev
+          php bin/console eccube:fixtures:load --env=dev
 
       - name: Install Plugins
         env:
@@ -60,16 +60,16 @@ jobs:
           DATABASE_URL: postgres://postgres:password@127.0.0.1:5432/eccube_db
           DATABASE_SERVER_VERSION: 14
         run: |
-          bin/console eccube:composer:require "ec-cube/recommend4"
-          bin/console eccube:composer:require "ec-cube/coupon4"
-          bin/console eccube:composer:require "ec-cube/mailmagazine4"
-          bin/console eccube:composer:require "ec-cube/salesreport4"
-          bin/console eccube:composer:require "ec-cube/relatedproduct4"
-          bin/console eccube:composer:require "ec-cube/securitychecker4"
-          bin/console eccube:composer:require "ec-cube/productreview4"
-          bin/console eccube:composer:require "ec-cube/api"
-          bin/console eccube:composer:require "ec-cube/sitekit"
-          bin/console eccube:composer:require "ec-cube/gmc"
+          php bin/console eccube:composer:require "ec-cube/recommend4"
+          php bin/console eccube:composer:require "ec-cube/coupon4"
+          php bin/console eccube:composer:require "ec-cube/mailmagazine4"
+          php bin/console eccube:composer:require "ec-cube/salesreport4"
+          php bin/console eccube:composer:require "ec-cube/relatedproduct4"
+          php bin/console eccube:composer:require "ec-cube/securitychecker4"
+          php bin/console eccube:composer:require "ec-cube/productreview4"
+          php bin/console eccube:composer:require "ec-cube/api"
+          php bin/console eccube:composer:require "ec-cube/sitekit"
+          php bin/console eccube:composer:require "ec-cube/gmc"
 
       - name: revert to config platform.php
         run: composer config platform.php 7.3.0

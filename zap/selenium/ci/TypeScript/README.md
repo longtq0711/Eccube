@@ -26,12 +26,12 @@ export COMPOSE_FILE=docker-compose.yml:docker-compose.pgsql.yml:docker-compose.d
 ## docker-compose を使用して EC-CUBE をインストールします
 cd path/to/ec-cube
 docker-compose up -d
-docker-compose exec -T ec-cube bin/console doctrine:schema:create --env=dev
-docker-compose exec -T ec-cube bin/console eccube:fixtures:load --env=dev
+docker-compose exec -T ec-cube php bin/console doctrine:schema:create --env=dev
+docker-compose exec -T ec-cube php bin/console eccube:fixtures:load --env=dev
 
 ## テスト用のダミーデータを生成します
-docker-compose exec -T ec-cube bin/console eccube:fixtures:generate --products=5 --customers=1 --orders=5
-docker-compose exec -T ec-cube bin/console doctrine:query:sql "UPDATE dtb_customer SET email = 'zap_user@example.com' WHERE id = 1;"
+docker-compose exec -T ec-cube php bin/console eccube:fixtures:generate --products=5 --customers=1 --orders=5
+docker-compose exec -T ec-cube php bin/console doctrine:query:sql "UPDATE dtb_customer SET email = 'zap_user@example.com' WHERE id = 1;"
 
 ## 環境変数 APP_ENV=prod に設定します
 sed -i.bak 's!APP_ENV: "dev"!APP_ENV: "prod"!g' docker-compose.yml

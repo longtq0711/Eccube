@@ -72,9 +72,9 @@ jobs:
           DATABASE_URL: ${{ matrix.database_url }}
           DATABASE_SERVER_VERSION: ${{ matrix.database_server_version }}
         run: |
-          bin/console doctrine:database:create
-          bin/console doctrine:schema:create
-          bin/console eccube:fixtures:load
+          php bin/console doctrine:database:create
+          php bin/console doctrine:schema:create
+          php bin/console eccube:fixtures:load
 
       - name: PHPUnit
         env:
@@ -162,9 +162,9 @@ jobs:
           DATABASE_SERVER_VERSION: ${{ matrix.database_server_version }}
         run: |
           echo "APP_ENV=${APP_ENV}" > .env
-          bin/console doctrine:database:create --env=dev
-          bin/console doctrine:schema:create --env=dev
-          bin/console eccube:fixtures:load --env=dev
+          php bin/console doctrine:database:create --env=dev
+          php bin/console doctrine:schema:create --env=dev
+          php bin/console eccube:fixtures:load --env=dev
 
       - name: setup-chromedriver
         uses: nanasess/setup-chromedriver@master

@@ -122,7 +122,7 @@ class InstallerCommand extends Command
             ' $ export MAILER_URL=mailer_url',
             ' $ export ECCUBE_AUTH_MAGIC=auth_magic',
             ' ... and more',
-            ' $ php bin/console eccube:install --no-interaction',
+            ' $ php php bin/console eccube:install --no-interaction',
             '',
         ]);
 
@@ -239,7 +239,7 @@ class InstallerCommand extends Command
         foreach ($commands as $command) {
             try {
                 $this->io->text(sprintf('<info>Run %s</info>...', $command));
-                $process = new Process('bin/console '.$command);
+                $process = new Process('php bin/console '.$command);
                 $process->mustRun();
                 $this->io->text($process->getOutput());
             } catch (ProcessFailedException $e) {

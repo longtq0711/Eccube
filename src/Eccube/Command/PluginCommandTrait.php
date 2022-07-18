@@ -54,7 +54,7 @@ trait PluginCommandTrait
         $command = 'cache:clear --no-warmup';
         try {
             $io->text(sprintf('<info>Run %s</info>...', $command));
-            $process = new Process('bin/console '.$command);
+            $process = new Process('php bin/console '.$command);
             $process->mustRun();
             $io->text($process->getOutput());
         } catch (ProcessFailedException $e) {

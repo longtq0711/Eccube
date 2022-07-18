@@ -145,7 +145,7 @@ class UpdateSchemaDoctrineCommandTest extends EccubeTestCase
         }), 'test_update_schema_command is exists');
 
         $pluginA = $this->pluginRepository->findOneBy(['code' => $configA['code']]);
-        $this->executeExternalProcess('bin/console eccube:plugin:uninstall --code='.$configA['code']);
+        $this->executeExternalProcess('php bin/console eccube:plugin:uninstall --code='.$configA['code']);
 
         $this->entityManager->detach($pluginA);
 
@@ -182,7 +182,7 @@ class UpdateSchemaDoctrineCommandTest extends EccubeTestCase
 
         $pluginA = $this->pluginRepository->findOneBy(['code' => $configA['code']]);
 
-        $this->executeExternalProcess('bin/console eccube:plugin:uninstall --code='.$configA['code']);
+        $this->executeExternalProcess('php bin/console eccube:plugin:uninstall --code='.$configA['code']);
 
         $this->entityManager->detach($pluginA);
 
@@ -202,7 +202,7 @@ class UpdateSchemaDoctrineCommandTest extends EccubeTestCase
 
         $this->pluginService->install($fileA);
 
-        $this->executeExternalProcess('bin/console eccube:plugin:enable --code='.$configA['code']);
+        $this->executeExternalProcess('php bin/console eccube:plugin:enable --code='.$configA['code']);
 
         $pluginA = $this->pluginRepository->findOneBy(['code' => $configA['code']]);
 
@@ -224,8 +224,8 @@ class UpdateSchemaDoctrineCommandTest extends EccubeTestCase
             return $column->getName() == 'test_update_schema_command';
         }), 'test_update_schema_command is exists');
 
-        $this->executeExternalProcess('bin/console eccube:plugin:disable --code='.$configA['code']);
-        $this->executeExternalProcess('bin/console eccube:plugin:uninstall --code='.$configA['code']);
+        $this->executeExternalProcess('php bin/console eccube:plugin:disable --code='.$configA['code']);
+        $this->executeExternalProcess('php bin/console eccube:plugin:uninstall --code='.$configA['code']);
 
         $this->entityManager->detach($pluginA);
 
@@ -242,7 +242,7 @@ class UpdateSchemaDoctrineCommandTest extends EccubeTestCase
         list($configA, $fileA) = $this->createDummyPluginWithEntityExtension();
         $this->pluginService->install($fileA);
 
-        $this->executeExternalProcess('bin/console eccube:plugin:enable --code='.$configA['code']);
+        $this->executeExternalProcess('php bin/console eccube:plugin:enable --code='.$configA['code']);
 
         $pluginA = $this->pluginRepository->findOneBy(['code' => $configA['code']]);
         $commandTester->execute(
@@ -262,8 +262,8 @@ class UpdateSchemaDoctrineCommandTest extends EccubeTestCase
             return $column->getName() == 'test_update_schema_command';
         }), 'test_update_schema_command is exists');
 
-        $this->executeExternalProcess('bin/console eccube:plugin:disable --code='.$configA['code']);
-        $this->executeExternalProcess('bin/console eccube:plugin:uninstall --code='.$configA['code']);
+        $this->executeExternalProcess('php bin/console eccube:plugin:disable --code='.$configA['code']);
+        $this->executeExternalProcess('php bin/console eccube:plugin:uninstall --code='.$configA['code']);
 
         $this->entityManager->detach($pluginA);
 
@@ -282,8 +282,8 @@ class UpdateSchemaDoctrineCommandTest extends EccubeTestCase
         list($configA, $fileA) = $this->createDummyPluginWithEntityExtension();
         $this->pluginService->install($fileA);
 
-        $this->executeExternalProcess('bin/console eccube:plugin:enable --code='.$configA['code']);
-        $this->executeExternalProcess('bin/console eccube:plugin:disable --code='.$configA['code']);
+        $this->executeExternalProcess('php bin/console eccube:plugin:enable --code='.$configA['code']);
+        $this->executeExternalProcess('php bin/console eccube:plugin:disable --code='.$configA['code']);
 
         $pluginA = $this->pluginRepository->findOneBy(['code' => $configA['code']]);
 
@@ -309,7 +309,7 @@ class UpdateSchemaDoctrineCommandTest extends EccubeTestCase
             return $column->getName() == 'test_update_schema_command';
         }), 'test_update_schema_command is exists');
 
-        $this->executeExternalProcess('bin/console eccube:plugin:uninstall --code='.$configA['code']);
+        $this->executeExternalProcess('php bin/console eccube:plugin:uninstall --code='.$configA['code']);
 
         $this->entityManager->detach($pluginA);
 
@@ -329,9 +329,9 @@ class UpdateSchemaDoctrineCommandTest extends EccubeTestCase
 
         $pluginA = $this->pluginRepository->findOneBy(['code' => $configA['code']]);
 
-        $this->executeExternalProcess('bin/console eccube:plugin:enable --code='.$configA['code']);
+        $this->executeExternalProcess('php bin/console eccube:plugin:enable --code='.$configA['code']);
 
-        $this->executeExternalProcess('bin/console eccube:plugin:disable --code='.$configA['code']);
+        $this->executeExternalProcess('php bin/console eccube:plugin:disable --code='.$configA['code']);
 
         $commandTester->execute(
             [
@@ -350,7 +350,7 @@ class UpdateSchemaDoctrineCommandTest extends EccubeTestCase
             return $column->getName() == 'test_update_schema_command';
         }), 'test_update_schema_command is exists');
 
-        $this->executeExternalProcess('bin/console eccube:plugin:uninstall --code='.$configA['code']);
+        $this->executeExternalProcess('php bin/console eccube:plugin:uninstall --code='.$configA['code']);
 
         $this->entityManager->detach($pluginA);
 
